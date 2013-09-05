@@ -311,21 +311,15 @@
         var $item;
         if (!this.shown) return;
         if (e.keyCode === 38) {         // UP
-          if (this.index === 0) {
-            this.deactivate();
-          } else {
-            e.preventDefault();
-            this.index -= 1;
-            this.activateIndexedItem();
-          }
+          e.preventDefault();
+          this.index = (this.index === 0) ?
+            this.data.length - 1 : this.index - 1;
+          this.activateIndexedItem();
         } else if (e.keyCode === 40) {  // DOWN
-          if (this.index === this.data.length - 1) {
-            this.deactivate();
-          } else {
-            e.preventDefault();
-            this.index += 1;
-            this.activateIndexedItem();
-          }
+          e.preventDefault();
+          this.index = (this.index === this.data.length - 1) ?
+            0 : this.index + 1;
+          this.activateIndexedItem();
         } else if (e.keyCode === 13 || e.keyCode === 9) {  // ENTER or TAB
           e.preventDefault();
           this.select(this.getActiveItem().children().data('value'));
