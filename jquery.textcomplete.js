@@ -328,7 +328,7 @@
 
       onClick: function (e) {
         e.originalEvent.internal = true;
-        this.select($(e.target).data('value'));
+        this.select($(e.currentTarget).data('value'));
       }
     });
 
